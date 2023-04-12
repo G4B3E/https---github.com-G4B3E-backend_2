@@ -36,3 +36,14 @@ Methods:
         News: localhost:3000/news:id
 
 
+
+Commands:
+    npm install
+    npm i -g @nestjs/cli
+    npm install --save @nestjs/typeorm typeorm mysql2
+    npm i --save class-validator class-transformer
+    npm i --save-dev @types/passport-local
+    npm i --save  passport passport-http-bearer
+    npm i --save @nestjs/passport
+
+
