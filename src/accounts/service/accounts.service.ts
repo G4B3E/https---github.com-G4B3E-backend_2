@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Account } from 'src/typeorm/entities/account.entity';
 import { CreateAccountParams, UpdateAccountParams } from 'src/utils/types';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AccountsService {
@@ -14,10 +15,18 @@ export class AccountsService {
     findAccounts(){
         return this.accountRepository.find();
     }
-    createAccount( accountDetails: CreateAccountParams){
+    async createAccount( accountDetails: CreateAccountParams){
+        const salt = await bcrypt.genSalt();
+        const hashPassword = await bcrypt.hash(accountDetails.password, salt);
+        console.log({ 
+            ...accountDetails,
+            password: hashPassword
+        })
         const newAccount = this.accountRepository.create({ 
-            ...accountDetails 
+            ...accountDetails,
+            password: hashPassword
         });
+        
         return this.accountRepository.save(newAccount);
     }
     updateAccount(id: number, updateAccountDetails: UpdateAccountParams){
