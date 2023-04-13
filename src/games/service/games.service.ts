@@ -2,15 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import  Game  from 'src/typeorm/entities/game.entity';
 import { CreateGameParams, UpdateGameParams } from 'src/utils/types';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 
 @Injectable()
 export class GamesService {
     constructor(
         @InjectRepository(Game)
-        private gameRepository:Repository<Game>,){}
-    findGames(){
-        return this.gameRepository.find();
+        private gameRepository:Repository<Game>,
+        private dataSource: DataSource){}
+    async findGames(){
+        return{games: await this.dataSource.getRepository(Game).find()};
     }
     createGame( createGameDetails:CreateGameParams){
         const newGame = this.gameRepository.create({...createGameDetails});

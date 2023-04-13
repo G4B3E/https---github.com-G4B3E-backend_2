@@ -2,14 +2,21 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import News from 'src/typeorm/entities/news.entity';
 import { CreateNewsParams, UpdateNewsParams } from 'src/utils/types';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 
 @Injectable()
 export class NewsService {
     constructor(@InjectRepository(News)
-    private newsRepository:Repository<News>,){}
+    private newsRepository:Repository<News>,
+    private dataSource: DataSource){}
 
-    findAllNews(){return this.newsRepository.find();}
+    async asdad(){
+    return {news : await this.dataSource.getRepository(News).find()};
+    }
+    findAllNews(){
+        return this.newsRepository.find();
+    }
+    
 
     createNews( newsDetails: CreateNewsParams){
         const newNews = this.newsRepository.create({ 

@@ -1,4 +1,5 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put, UseGuards,Request } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { CreateAccountDto } from 'src/accounts/dtos/createaccount.dto';
 import { UpdateAccountDto } from 'src/accounts/dtos/updateaccount.dto';
 import { AccountsService } from 'src/accounts/service/accounts.service';
@@ -12,6 +13,9 @@ export class AccountsController {
         const accounts = await this.accountService.findAccounts();
         return accounts;
     }
+
+   
+
     @Post()
     createAccount(@Body() createAccountDto: CreateAccountDto ){
         return this.accountService.createAccount(createAccountDto);

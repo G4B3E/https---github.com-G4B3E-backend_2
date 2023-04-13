@@ -2,19 +2,23 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Account } from 'src/typeorm/entities/account.entity';
 import { CreateAccountParams, UpdateAccountParams } from 'src/utils/types';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AccountsService {
     constructor(
         @InjectRepository(Account)
-        private accountRepository: Repository<Account>,){
+        private accountRepository: Repository<Account>,
+        private dataSource: DataSource){
 
     }
-    findAccounts(){
-        return this.accountRepository.find();
-    }
+
+    async findAccounts(){
+        return{news: await this.dataSource.getRepository(Account).find()};
+        }
+        
+ 
     async createAccount( accountDetails: CreateAccountParams){
         const salt = await bcrypt.genSalt();
         const hashPassword = await bcrypt.hash(accountDetails.password, salt);
