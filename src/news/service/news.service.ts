@@ -10,13 +10,9 @@ export class NewsService {
     private newsRepository:Repository<News>,
     private dataSource: DataSource){}
 
-    async asdad(){
+    async findAllNews(){
     return {news : await this.dataSource.getRepository(News).find()};
     }
-    findAllNews(){
-        return this.newsRepository.find();
-    }
-    
 
     createNews( newsDetails: CreateNewsParams){
         const newNews = this.newsRepository.create({ 

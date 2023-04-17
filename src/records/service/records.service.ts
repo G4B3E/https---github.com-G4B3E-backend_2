@@ -3,15 +3,17 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { privateDecrypt } from 'crypto';
 import Records from 'src/typeorm/entities/records.entity';
 import { CreateRecordParams, UpdateRecordParams } from 'src/utils/types';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 
 @Injectable()
 export class RecordsService {
     constructor(@InjectRepository(Records)
-    private recordRepository:Repository<Records>,){}
-    findRecords(){
-        return this.recordRepository.find();
+    private recordRepository:Repository<Records>,
+    private dataSource: DataSource){}
+    async findRecords(){
+        return {records : await this.dataSource.getRepository(Records).find()};
     }
+    
     createRecord(recordDetails:CreateRecordParams){
         const newRecord = this.recordRepository.create({
             ...recordDetails

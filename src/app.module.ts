@@ -23,7 +23,7 @@ import { PassportModule } from '@nestjs/passport';
     port: 3306,
     username: 'root',
     password: '',
-    database: 'Guide_Runner',
+    database: 'guide_runner',
     entities: [Account,Games,News,Records,Token],
     synchronize: false,
     migrationsRun: false,

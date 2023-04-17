@@ -11,7 +11,7 @@ export class NewsController {
 
     @Get()
     async getAllNews(){
-        const news = await this.newsService.asdad();
+        const news = await this.newsService.findAllNews();
         return news;
     }
 
