@@ -14,7 +14,7 @@ export default class News {
   @Column()
   content: string;
 
-  @Column()//oldal forrás
+  @Column()
   source: string;
 
   @Column()
