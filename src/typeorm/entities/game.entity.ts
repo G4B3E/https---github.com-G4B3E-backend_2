@@ -12,7 +12,7 @@ export default class Game {
   release: number;
 
   @Column()
-  category: string;
+  genre: string;
 
   @Column()
   platform: string;

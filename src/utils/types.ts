@@ -11,7 +11,7 @@ export type UpdateAccountParams = {
 export type CreateGameParams = {
     gamename: string;
     release: number;
-    category: string;
+    genre: string;
     platform: string;
     developer: string;
     description: string;
@@ -20,7 +20,7 @@ export type CreateGameParams = {
 export type UpdateGameParams = {
     gamename: string;
     release: number;
-    category: string;
+    genre: string;
     platform: string;
     developer: string;
     description: string;

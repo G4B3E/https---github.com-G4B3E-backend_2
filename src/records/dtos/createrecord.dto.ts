@@ -1,7 +1,7 @@
 import { IsString } from "class-validator";
 
 export class CreateRecordDto {
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+  @IsString({ message: 'Kérlek érvényes felhasználó nevet adj meg!' })
   username: string;
   @IsString({ message: 'Kérlek szöveget adj meg' })
   gamename: string;
