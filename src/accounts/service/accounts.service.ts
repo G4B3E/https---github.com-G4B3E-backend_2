@@ -17,6 +17,11 @@ export class AccountsService {
     async findAccounts(){
         return{accounts: await this.dataSource.getRepository(Account).find()};
         }
+
+    async findAccount(id:number){
+        return await this.dataSource.getRepository(Account).findBy({id:id});
+        }
+
         
  
     async createAccount( accountDetails: CreateAccountParams){

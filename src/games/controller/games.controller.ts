@@ -15,6 +15,14 @@ export class GamesController {
         const games = await this.gameService.findGames();
         return games;
     }
+
+    @Get(':id')
+    findGame(@Param('id') id: number){
+        return this.gameService.findGame(+id);
+    }
+
+
+
     @Post()
     createGame(@Body() createGameDto: CreateGameDto){
         return this.gameService.createGame(createGameDto);

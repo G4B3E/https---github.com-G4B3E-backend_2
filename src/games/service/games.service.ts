@@ -13,10 +13,15 @@ export class GamesService {
     async findGames(){
         return{games: await this.dataSource.getRepository(Game).find()};
     }
+    async findGame(id:number){
+        return await this.dataSource.getRepository(Game).findBy({id:id});
+        }
+
     createGame( createGameDetails:CreateGameParams){
         const newGame = this.gameRepository.create({...createGameDetails});
         return this.gameRepository.save(newGame);
     }
+    
     updateGame(id: number, updateGameDetails: UpdateGameParams){
         return this.gameRepository.update({ id }, {...updateGameDetails });
     }

@@ -13,6 +13,11 @@ export class RecordsService {
     async findRecords(){
         return {records : await this.dataSource.getRepository(Records).find()};
     }
+
+    async findRecord(id:number){
+        return await this.dataSource.getRepository(Records).findBy({id:id});
+        }
+
     
     createRecord(recordDetails:CreateRecordParams){
         const newRecord = this.recordRepository.create({

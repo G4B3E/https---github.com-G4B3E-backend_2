@@ -13,6 +13,10 @@ export class AccountsController {
         const accounts = await this.accountService.findAccounts();
         return accounts;
     }
+    @Get(':id')
+    findAccount(@Param('id') id: number){
+        return this.accountService.findAccount(+id);
+    }
 
    
 

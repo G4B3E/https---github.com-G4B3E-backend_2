@@ -12,6 +12,10 @@ export class RecordsController {
         const records = await this.recordService.findRecords();
         return records;
     }
+    @Get(':id')
+    findRecord(@Param('id') id: number){
+        return this.recordService.findRecord(+id);
+    }
     @Post()
     createRecord(@Body() createRecordDto: CreateRecordDto ){
         return this.recordService.createRecord(createRecordDto);
