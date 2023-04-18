@@ -1,3 +1,4 @@
+
 - 2023.03.21 -
 accountname changed to username
 added 'source' column to news
@@ -32,4 +33,8 @@ Post newAcccount
 - 2023.04.11 -
 outsourcing methods to a separate folders
 
+- 2023.04.18 -
+dto validations upadated
+get by id method added
+game category changed to genre
 
