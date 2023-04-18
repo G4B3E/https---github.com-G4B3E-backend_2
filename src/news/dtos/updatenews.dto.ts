@@ -1,15 +1,24 @@
-import { IsString } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class UpdateNewsDto {
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid gamename!' })
   gamename: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid title!' })
   title: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+  
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid content!' })  
   content: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+  
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid source!' })  
   source: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+  
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid date!' })  
   date: string;
 
 }

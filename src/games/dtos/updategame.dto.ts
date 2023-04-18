@@ -1,25 +1,33 @@
-import { IsString, IsUrl,IsInt } from "class-validator";
+import { IsString, IsUrl,IsInt, IsNotEmpty } from "class-validator";
 
 export class UpdateGameDto {
 
-  @IsString({ message: 'név rossz' })
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid gamename!' })
   gamename: string;
   
-  @IsInt({message:"nem szam"}) 
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid release date!' }) 
   release: number;
   
-  @IsString({ message: 'kategória rossz' })
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid genre!' })
   genre: string;
   
-  @IsString({ message: 'platform rossz' })
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid platform!' })
   platform: string;
   
-  @IsString({ message: 'developer rossz' })
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid developer!' })
   developer: string;
   
-  @IsString({ message: 'description rossz' })
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid description!' })
   description: string;
   
+
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
   @IsUrl()
   image: string;
 }

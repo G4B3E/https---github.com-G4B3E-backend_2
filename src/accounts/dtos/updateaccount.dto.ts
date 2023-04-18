@@ -1,5 +1,6 @@
 import {
     IsEmail,
+    IsNotEmpty,
     IsString,
     MaxLength, 
     MinLength,
@@ -7,17 +8,21 @@ import {
 
 
 export class UpdateAccountDto{
-    @IsString({ message: 'A username nincs megadva vagy nem szöveg' })
-    @MinLength(3, { message: 'A username nem lehetet kevesebb, mint 3 karakter!' })
-    @MaxLength(20, { message: 'A username nem lehetet nagyobb, mint 20 karakter!' })
+    @IsNotEmpty({message:"Please do not leave this field empty!"})
+    @IsString({ message: 'Please enter a valid username!' })
+    @MinLength(3, { message: 'The username cannot be less than 3 characters!' })
+    @MaxLength(20, { message: 'The username cannot be more than 20 characters!' })
     username: string;
   
-    @IsString({ message: 'A tartalomnak szövegnek kell lennie!' })
+    @IsNotEmpty({message:"Please do not leave this field empty!"})
+    @IsString({ message: 'Please enter a valid email!' })
     @IsEmail()
     email: string;
   
-    @MinLength(8, { message: 'A jelszó nem lehetet kevesebb, mint 8 karakter!' })
-    @MaxLength(64, { message: 'A jelszó nem lehetet nagyobb, mint 64 karakter!' })
+    @IsNotEmpty({message:"Please do not leave this field empty!"})
+    @IsString({ message: 'Please enter a valid password!' })
+    @MinLength(8, { message: 'The username cannot be less than 8 characters!' })
+    @MaxLength(64, { message: 'The username cannot be more than 64 characters!' })
     password: string;
   
 }

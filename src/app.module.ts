@@ -25,7 +25,7 @@ import { PassportModule } from '@nestjs/passport';
     password: '',
     database: 'guide_runner',
     entities: [Account,Games,News,Records,Token],
-    synchronize: false,
+    synchronize: true,
     migrationsRun: false,
     
   }), AccountsModule, GamesModule, NewsModule, RecordsModule,AuthModule,
