@@ -1,16 +1,27 @@
-import { IsString } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateRecordDto {
-  @IsString({ message: 'Kérlek érvényes felhasználó nevet adj meg!' })
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid username!' })
   username: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid gamename!' })
   gamename: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid time! Use this format "hour:minute:second"!' })
   time: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid platform!' })
   platform: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid defficulty!' })
   difficulty: string;
-  @IsString({ message: 'Kérlek szöveget adj meg' })
+
+  @IsNotEmpty({message:"Please do not leave this field empty!"})
+  @IsString({ message: 'Please enter a valid link!' })
   youtubelink: string;
 }

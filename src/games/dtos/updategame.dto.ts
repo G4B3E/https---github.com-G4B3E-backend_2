@@ -9,7 +9,7 @@ export class UpdateGameDto {
   release: number;
   
   @IsString({ message: 'kategória rossz' })
-  category: string;
+  genre: string;
   
   @IsString({ message: 'platform rossz' })
   platform: string;
